@@ -6,7 +6,29 @@ function App() {
     <>
       <section id="board">
         <section id="world-map">
-          <MapCard serfdomTitle="13 Colonies" modernTitle="United States of America" modernized={false} sphere="West" />
+          <MapCard
+            cardNumber={1}
+            serfdomTitle="13 Colonies"
+            modernTitle="United States of America"
+            modernized={false}
+            sphere="West"
+            portOne= string;
+            portOneAdmin: string;
+            portOneDefaultAdmin: string;
+            portOneSlaveSpaces: number;
+            portTwo?: string;
+            portTwoAdmin?: string;
+            portTwoDefaultAdmin?: string;
+            portTwoSlaveSpaces?: number;
+            dissentSpaces: number;
+            anarchy: number;
+            disease: boolean;
+            coastalNorth?: boolean;
+            coastalSouth?: boolean;
+            coastalEast?: boolean;
+            coastalWest?: boolean;
+            
+          />
           <MapCard serfdomTitle="Europe" modernTitle="First French Empire" modernized={false} sphere="West" />
           <MapCard serfdomTitle="Ottoman" modernTitle="Soviet Union" modernized={false} sphere="East" />
           <MapCard serfdomTitle="Qing China" modernTitle="Republic of China" modernized={false} sphere="East" />

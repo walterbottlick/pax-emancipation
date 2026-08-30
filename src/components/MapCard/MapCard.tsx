@@ -1,10 +1,26 @@
 import "./MapCard.css";
 
 interface MapCardProps {
+    cardNumber: number;
     serfdomTitle: string;
     modernTitle: string;
     modernized: boolean;
     sphere: string;
+    portOne: string;
+    portOneAdmin: string;
+    portOneDefaultAdmin: string;
+    portOneSlaveSpaces: number;
+    portTwo?: string;
+    portTwoAdmin?: string;
+    portTwoDefaultAdmin?: string;
+    portTwoSlaveSpaces?: number;
+    dissentSpaces: number;
+    anarchy: number;
+    disease: boolean;
+    coastalNorth?: boolean;
+    coastalSouth?: boolean;
+    coastalEast?: boolean;
+    coastalWest?: boolean;
 }
 
 
