@@ -1,47 +1,26 @@
-import MapCard from "./components/MapCard/MapCard";
+import MapCard from "./features/MapCard/MapCard";
 import './App.css'
+import { GameProvider, useGameState } from "./game/GameContext";
+import { MAP_CARD_DEFINITIONS } from "./features/MapCard/mapCardDefinitions";
 
 function App() {
-  return (
-    <>
-      <section id="board">
-        <section id="world-map">
-          <MapCard
-            cardNumber={1}
-            serfdomTitle="13 Colonies"
-            modernTitle="United States of America"
-            modernized={false}
-            sphere="West"
-            portOne= string;
-            portOneAdmin: string;
-            portOneDefaultAdmin: string;
-            portOneSlaveSpaces: number;
-            portTwo?: string;
-            portTwoAdmin?: string;
-            portTwoDefaultAdmin?: string;
-            portTwoSlaveSpaces?: number;
-            dissentSpaces: number;
-            anarchy: number;
-            disease: boolean;
-            coastalNorth?: boolean;
-            coastalSouth?: boolean;
-            coastalEast?: boolean;
-            coastalWest?: boolean;
-            
-          />
-          <MapCard serfdomTitle="Europe" modernTitle="First French Empire" modernized={false} sphere="West" />
-          <MapCard serfdomTitle="Ottoman" modernTitle="Soviet Union" modernized={false} sphere="East" />
-          <MapCard serfdomTitle="Qing China" modernTitle="Republic of China" modernized={false} sphere="East" />
-          <MapCard serfdomTitle="Tokugawa Japan" modernTitle="Meiji Japan" modernized={false} sphere="East" />
-          <MapCard serfdomTitle="Brazil" modernTitle="Empire of Brazil" modernized={false} sphere="West" />
-          <MapCard serfdomTitle="Kongo" modernTitle="Congo Free State" modernized={false} sphere="West" />
-          <MapCard serfdomTitle="Zululand" modernTitle="Veiled Protectorate" modernized={false} sphere="East" />
-          <MapCard serfdomTitle="India" modernTitle="John Company" modernized={false} sphere="East" />
-          <MapCard serfdomTitle="East Indies" modernTitle="Dutch East Indies" modernized={false} sphere="West" />
-        </section>
-      </section>
-    </>
-  )
+    return (
+        <GameProvider>
+            <Board />
+        </GameProvider>
+    );
+}
+
+function Board() {
+    const gameState = useGameState();
+
+    return (
+        <div className="map">
+            {MAP_CARD_DEFINITIONS.map(def => (
+                <MapCard key={def.cardNumber} definition={def} state={gameState[def.cardNumber]} />
+            ))}
+        </div>
+    );
 }
 
 export default App
