@@ -16,7 +16,6 @@ function MapCard({ definition, state }: MapCardProps) {
                 <p>Port One Admin: {state.portOneAdmin}</p>
                 <p>Default: {definition.portOneDefaultAdmin}</p>
             </div>
-            <div className="map">{/* Your map will eventually go here */}</div>
         </div>
     );
 }

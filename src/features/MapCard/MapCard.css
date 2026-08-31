@@ -1,5 +1,8 @@
 .map {
     background: var(--board-bg);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
 }
 
 .map-card {

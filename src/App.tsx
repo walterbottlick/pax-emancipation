@@ -15,10 +15,12 @@ function Board() {
     const gameState = useGameState();
 
     return (
-        <div className="map">
-            {MAP_CARD_DEFINITIONS.map(def => (
-                <MapCard key={def.cardNumber} definition={def} state={gameState[def.cardNumber]} />
-            ))}
+        <div id="board">
+            <div className="map">
+                {MAP_CARD_DEFINITIONS.map(def => (
+                    <MapCard key={def.cardNumber} definition={def} state={gameState[def.cardNumber]} />
+                ))}
+            </div>
         </div>
     );
 }
