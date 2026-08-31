@@ -2,7 +2,7 @@ export const Faction = {
     None: 0,
     Parliament: 1,
     Evangelicals: 2,
-    Philanthropists: 3,
+    Philanthropists: 3
 } as const;
 
 export type Faction = (typeof Faction)[keyof typeof Faction];
@@ -10,7 +10,7 @@ export type Faction = (typeof Faction)[keyof typeof Faction];
 export const ALL_FACTIONS = [
     Faction.Parliament,
     Faction.Evangelicals,
-    Faction.Philanthropists,
+    Faction.Philanthropists
 ] as const;
 
 export function factionName(faction: Faction): string {
