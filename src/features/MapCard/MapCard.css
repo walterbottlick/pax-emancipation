@@ -1,8 +1,12 @@
+.map {
+    background: var(--board-bg);
+}
+
 .map-card {
     aspect-ratio: 9 / 14;
     border: 1px solid var(--border);
     border-radius: 6px;
     flex-basis: 20%;
     box-sizing: border-box;
-    background: rgb(97, 147, 186);
+    background: rgb(97, 147, 186);;
 }
