@@ -15,11 +15,11 @@ export interface RevolutionCardSideDefinition {
     victoryPoints1Faction: Faction;
     victoryPoints2: number;
     victoryPoints2Faction: Faction;
-    minEngagementSpots: number;
 }
 
 export interface RevolutionCardDefinition {
     cardNumber: number;
+    minEngagementSpots: number;
     slaveRevolt: RevolutionCardSideDefinition;
     civilRights: RevolutionCardSideDefinition;
 }
