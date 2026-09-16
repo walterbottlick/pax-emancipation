@@ -1,4 +1,4 @@
-import { Faction } from "../shared/faction";
+import { Faction } from "../shared/factions";
 
 export type GameAction =
     | { type: "FLIP_CARD"; cardNumber: number }

@@ -1,5 +1,5 @@
-import type { Faction } from "../../shared/faction";
-import type { Sphere } from "../../shared/sphere";
+import type { Faction } from "../../shared/factions";
+import type { Sphere } from "../../shared/spheres";
 
 export interface MapCardDefinition {
     cardNumber: number;

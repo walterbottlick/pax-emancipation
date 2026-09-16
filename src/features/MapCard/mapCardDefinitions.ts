@@ -1,6 +1,6 @@
 import type { MapCardDefinition } from "./mapCard.types";
-import { Faction } from "../../shared/faction";
-import { Sphere } from "../../shared/sphere";
+import { Faction } from "../../shared/factions";
+import { Sphere } from "../../shared/spheres";
 
 export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
     {

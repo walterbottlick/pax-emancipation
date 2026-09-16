@@ -1,7 +1,7 @@
 import { MAP_CARD_DEFINITIONS } from "../features/MapCard/mapCardDefinitions";
 import type { GameState } from "../shared/types";
 import type { GameAction } from "./gameActions";
-import { Faction } from "../shared/faction";
+import { Faction } from "../shared/factions";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
