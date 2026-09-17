@@ -163,5 +163,5 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         coastalEast: false,
         coastalSouth: false,
         coastalWest: true,
-    },
+    }
 ];
