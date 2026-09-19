@@ -11,6 +11,10 @@
     --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
     --mono: ui-monospace, Consolas, monospace;
 
+    --faction-parliament: rgb(115, 10, 20);
+    --faction-evangelicals: rgb(255, 255, 255);
+    --faction-philanthropists: rgb(0, 55, 40);
+
     font: 18px/145% var(--sans);
     letter-spacing: 0.18px;
     color-scheme: light dark;

@@ -1,3 +1,7 @@
 import type { MapCardState } from "../features/MapCard/mapCard.types";
+import type { RevolutionCardState } from "../features/RevolutionCard/revolutionCard.types";
 
-export type GameState = Record<number, MapCardState>;
+export interface GameState {
+    mapCards: Record<number, MapCardState>;
+    revolutionCards: Record<number, RevolutionCardState>;
+}

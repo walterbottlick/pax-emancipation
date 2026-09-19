@@ -1,6 +1,7 @@
 import MapCard from "./features/MapCard/MapCard";
 import './App.css'
-import { GameProvider, useGameState } from "./game/GameContext";
+import { GameProvider } from "./game/GameContext";
+import { useGameState } from "./game/useGame";
 import { MAP_CARD_DEFINITIONS } from "./features/MapCard/mapCardDefinitions";
 
 function App() {
@@ -18,7 +19,7 @@ function Board() {
         <div id="board">
             <div className="map">
                 {MAP_CARD_DEFINITIONS.map(def => (
-                    <MapCard key={def.cardNumber} definition={def} state={gameState[def.cardNumber]} />
+                    <MapCard key={def.cardNumber} definition={def} state={gameState.mapCards[def.cardNumber]} />
                 ))}
             </div>
         </div>

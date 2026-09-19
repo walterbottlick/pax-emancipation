@@ -1,10 +1,11 @@
-import type { Faction } from "../../shared/faction";
+import type { Faction } from "../../shared/factions";
+import type { Sphere } from "../../shared/spheres";
 
 export interface MapCardDefinition {
     cardNumber: number;
     serfdomTitle: string;
     modernTitle: string;
-    sphere: string;
+    sphere: Sphere;
     portOne: string;
     portOneDefaultAdmin: Faction;
     portOneSlaveSpaces: number;

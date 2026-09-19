@@ -1,10 +1,6 @@
-import { createContext, useContext, useReducer, type ReactNode, type Dispatch } from "react";
-import type { GameState } from "../shared/types";
-import type { GameAction } from "./gameActions";
+import { useReducer, type ReactNode } from "react";
 import { gameReducer, buildInitialGameState } from "./gameReducer";
-
-const GameStateContext = createContext<GameState | null>(null);
-const GameDispatchContext = createContext<Dispatch<GameAction> | null>(null);
+import { GameStateContext, GameDispatchContext } from "./gameContexts";
 
 export function GameProvider({ children }: { children: ReactNode }) {
     const [state, dispatch] = useReducer(gameReducer, undefined, buildInitialGameState);
@@ -16,16 +12,4 @@ export function GameProvider({ children }: { children: ReactNode }) {
             </GameDispatchContext.Provider>
         </GameStateContext.Provider>
     );
-}
-
-export function useGameState(): GameState {
-    const context = useContext(GameStateContext);
-    if (context === null) throw new Error("useGameState must be used within a GameProvider");
-    return context;
-}
-
-export function useGameDispatch(): Dispatch<GameAction> {
-    const context = useContext(GameDispatchContext);
-    if (context === null) throw new Error("useGameDispatch must be used within a GameProvider");
-    return context;
 }
