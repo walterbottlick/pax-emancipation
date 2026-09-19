@@ -4,7 +4,6 @@ import { Ops } from "../../shared/ops";
 import { Faction } from "../../shared/factions";
 
 export const REVOLUTION_CARD_DEFINITIONS: RevolutionCardDefinition[] = [
-    
     {
         cardNumber: 1,
         minEngagementSpots: 3,
