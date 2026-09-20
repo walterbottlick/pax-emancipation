@@ -25,5 +25,5 @@ export const ALL_DIE_COLORS = [
 export interface Die {
     face: DieFace;
     color: DieColor;
-    frustratedHate: boolean;
+    frustratedHate?: boolean;
 }
