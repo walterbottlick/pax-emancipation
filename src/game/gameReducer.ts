@@ -3,6 +3,8 @@ import type { GameState } from "../shared/types";
 import type { GameAction } from "./gameActions";
 import { Faction } from "../shared/factions";
 import { buildInitialRevolutionCardState } from "../features/RevolutionCard/revolutionCard.types";
+import { FINANCE_BOARD_DEFINITIONS } from "../features/FinanceBoard/financeBoardDefinitions";
+import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeBoard.types";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -109,6 +111,57 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "MOVE_AGENT": {
+            const board = state.financeBoards[action.faction];
+            if (board.agents[action.from] === 0) return state;
+            return {
+                ...state,
+                financeBoards: {
+                    ...state.financeBoards,
+                    [action.faction]: {
+                        agents: {
+                            ...board.agents,
+                            [action.from]: board.agents[action.from] - 1,
+                            [action.to]: board.agents[action.to] + 1,
+                        },
+                    },
+                },
+            };
+        }
+
+        case "ADD_AGENT": {
+            const board = state.financeBoards[action.faction];
+            return {
+                ...state,
+                financeBoards: {
+                    ...state.financeBoards,
+                    [action.faction]: {
+                        agents: {
+                            ...board.agents,
+                            [action.space]: board.agents[action.space] + 1,
+                        },
+                    },
+                },
+            };
+        }
+
+        case "REMOVE_AGENT": {
+            const board = state.financeBoards[action.faction];
+            if (board.agents[action.space] === 0) return state;
+            return {
+                ...state,
+                financeBoards: {
+                    ...state.financeBoards,
+                    [action.faction]: {
+                        agents: {
+                            ...board.agents,
+                            [action.space]: board.agents[action.space] - 1,
+                        },
+                    },
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -133,6 +186,9 @@ export function buildInitialGameState(): GameState {
         ),
         revolutionCards: Object.fromEntries(
             MAP_CARD_DEFINITIONS.map(def => [def.cardNumber, buildInitialRevolutionCardState()])
+        ),
+        financeBoards: Object.fromEntries(
+            FINANCE_BOARD_DEFINITIONS.map(def => [def.faction, buildInitialFinanceBoardState()])
         ),
     };
 }
