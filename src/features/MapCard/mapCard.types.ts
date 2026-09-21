@@ -1,6 +1,13 @@
 import type { Faction } from "../../shared/factions";
 import type { Sphere } from "../../shared/spheres";
 
+export type PortSlot = "portOne" | "portTwo";
+
+export interface MapCardPortReference {
+    cardNumber: number;
+    port: PortSlot;
+}
+
 export interface MapCardDefinition {
     cardNumber: number;
     serfdomTitle: string;

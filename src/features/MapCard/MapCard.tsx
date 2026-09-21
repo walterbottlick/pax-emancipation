@@ -1,6 +1,5 @@
 import "./MapCard.css";
 import type { MapCardDefinition, MapCardState } from "./mapCard.types";
-import { factionName } from "../../shared/factions";
 
 interface MapCardProps {
     definition: MapCardDefinition;
@@ -14,8 +13,8 @@ function MapCard({ definition, state }: MapCardProps) {
         <div className="map-card">
             <h2>{displayTitle}</h2>
             <div className="admin-tracker">
-                <p>Port One Admin: {factionName(state.portOneAdmin)}</p>
-                <p>Default: {factionName(definition.portOneDefaultAdmin)}</p>
+                <p>Port One Admin: {state.portOneAdmin}</p>
+                <p>Default: {definition.portOneDefaultAdmin}</p>
             </div>
         </div>
     );

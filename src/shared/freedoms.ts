@@ -1,8 +1,8 @@
 export const Freedom = {
-    Candle: 1,
-    Comet: 2,
-    Feather: 3,
-    Lock: 4
+    Candle: "Candle",
+    Comet: "Comet",
+    Feather: "Feather",
+    Lock: "Lock"
 } as const;
 
 export type Freedom = (typeof Freedom)[keyof typeof Freedom];
@@ -21,22 +21,13 @@ export const FreedomColor = {
 
 export type FreedomColor = (typeof FreedomColor)[keyof typeof FreedomColor];
 
-interface FreedomProperties {
-    name: string;
-    color: FreedomColor;
-}
-
-const FREEDOM_PROPERTIES: Record<Freedom, FreedomProperties> = {
-    [Freedom.Candle]: { name: "Candle", color: FreedomColor.Black },
-    [Freedom.Comet]: { name: "Comet", color: FreedomColor.Black },
-    [Freedom.Feather]: { name: "Feather", color: FreedomColor.Red },
-    [Freedom.Lock]: { name: "Lock", color: FreedomColor.Red }
+const FREEDOM_COLORS: Record<Freedom, FreedomColor> = {
+    [Freedom.Candle]: FreedomColor.Black,
+    [Freedom.Comet]: FreedomColor.Black,
+    [Freedom.Feather]: FreedomColor.Red,
+    [Freedom.Lock]: FreedomColor.Red
 };
 
-export function freedomName(freedom: Freedom): string {
-    return FREEDOM_PROPERTIES[freedom].name;
-}
-
 export function freedomColor(freedom: Freedom): FreedomColor {
-    return FREEDOM_PROPERTIES[freedom].color;
+    return FREEDOM_COLORS[freedom];
 }

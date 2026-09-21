@@ -7,9 +7,6 @@ import type {
     RevolutionCardState,
 } from "./revolutionCard.types";
 import { revolutionCardSideColor, occupiedEngagementSpots } from "./revolutionCard.types";
-import { factionName } from "../../shared/factions";
-import { freedomName } from "../../shared/freedoms";
-import { opsName } from "../../shared/ops";
 
 interface RevolutionCardProps {
     definition: RevolutionCardDefinition;
@@ -49,18 +46,18 @@ function RevolutionCardSide({ side, definition, state, minEngagementSpots }: Rev
     return (
         <div className="revolution-card-side" style={{ borderColor: revolutionCardSideColor(side) }}>
             <h2>{definition.cardName}</h2>
-            <p>{freedomName(definition.freedom1)} / {freedomName(definition.freedom2)}</p>
+            <p>{definition.freedom1} / {definition.freedom2}</p>
             <p>Cultural Diffusion: {definition.culturalDiffusion ? "Yes" : "No"}</p>
-            <p>Ops: {ops.map(opsName).join(", ")}</p>
+            <p>Ops: {ops.join(", ")}</p>
             <p>
-                {factionName(definition.victoryPoints1Faction)}: {definition.victoryPoints1} VP /{" "}
-                {factionName(definition.victoryPoints2Faction)}: {definition.victoryPoints2} VP
+                {definition.victoryPoints1Faction}: {definition.victoryPoints1} VP /{" "}
+                {definition.victoryPoints2Faction}: {definition.victoryPoints2} VP
             </p>
             <div className="engagement-track">
                 <p>Engagement: {occupied} / min {minEngagementSpots}</p>
                 <ol className="revolutionaries">
                     {state.revolutionaries.map((faction, index) => (
-                        <li key={index}>{factionName(faction)}</li>
+                        <li key={index}>{faction}</li>
                     ))}
                 </ol>
             </div>

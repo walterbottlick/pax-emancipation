@@ -1,10 +1,10 @@
 export const Impacts = {
-    Syndication: 1,
-    Post: 2,
-    Wealth: 3,
-    Revolutionary: 4,
-    Ship: 5,
-    ClaimBarrier: 6
+    Syndication: "Syndication",
+    Post: "Post",
+    Wealth: "Wealth",
+    Revolutionary: "Revolutionary",
+    Ship: "Ship",
+    ClaimBarrier: "ClaimBarrier"
 } as const;
 
 export const BarrierColor = {
@@ -26,24 +26,23 @@ export const ALL_IMPACTS = [
     Impacts.ClaimBarrier
 ] as const;
 
-interface ImpactsProperties {
-    name: string;
-    elephant: boolean;
-}
-
-const IMPACTS_PROPERTIES: Record<Impacts, ImpactsProperties> = {
-    [Impacts.Syndication]: { name: "Syndication", elephant: false },
-    [Impacts.Post]: { name: "Post", elephant: false },
-    [Impacts.Wealth]: { name: "Wealth", elephant: false },
-    [Impacts.Revolutionary]: { name: "Revolutionary", elephant: false },
-    [Impacts.Ship]: { name: "Ship", elephant: false },
-    [Impacts.ClaimBarrier]: { name: "ClaimBarrier", elephant: true }
+const IMPACTS_DISPLAY_OVERRIDES: Partial<Record<Impacts, string>> = {
+    [Impacts.ClaimBarrier]: "Claim Barrier"
 };
 
 export function impactsName(impacts: Impacts): string {
-    return IMPACTS_PROPERTIES[impacts].name;
+    return IMPACTS_DISPLAY_OVERRIDES[impacts] ?? impacts;
 }
 
+const IMPACTS_ELEPHANT: Record<Impacts, boolean> = {
+    [Impacts.Syndication]: false,
+    [Impacts.Post]: false,
+    [Impacts.Wealth]: false,
+    [Impacts.Revolutionary]: false,
+    [Impacts.Ship]: false,
+    [Impacts.ClaimBarrier]: true
+};
+
 export function impactsElephant(impacts: Impacts): boolean {
-    return IMPACTS_PROPERTIES[impacts].elephant;
+    return IMPACTS_ELEPHANT[impacts];
 }
