@@ -10,7 +10,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -21,7 +21,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -32,12 +32,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -48,22 +48,22 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 3,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die3: {
             face: 4,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die4: {
             face: 5,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -74,7 +74,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -85,12 +85,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -101,7 +101,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -112,12 +112,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -128,12 +128,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -144,7 +144,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -155,7 +155,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -166,22 +166,22 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Green,
-            frustratedHate: false
+            frustration: false
         },
         die2: {
             face: 3,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die3: {
             face: 4,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die4: {
             face: 5,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -192,12 +192,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 2,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -208,12 +208,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 4,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -224,7 +224,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -235,12 +235,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -251,22 +251,22 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Green,
-            frustratedHate: false
+            frustration: false
         },
         die2: {
             face: 3,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die3: {
             face: 4,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die4: {
             face: 5,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -277,12 +277,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 2,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -293,12 +293,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 4,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -309,12 +309,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -325,12 +325,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -341,7 +341,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -352,12 +352,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -368,12 +368,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 5,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -384,7 +384,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -395,7 +395,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -406,12 +406,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -422,7 +422,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -433,12 +433,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -449,7 +449,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -460,12 +460,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -476,22 +476,22 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 2,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         },
         die2: {
             face: 3,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die3: {
             face: 4,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die4: {
             face: 5,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -502,12 +502,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 2,
             color: DieColor.Red,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -518,7 +518,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 3,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -529,12 +529,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -545,12 +545,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 6,
             color: DieColor.Green,
-            frustratedHate: false
+            frustration: false
         },
         die2: {
             face: 6,
             color: DieColor.Yellow,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -561,17 +561,17 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 1,
             color: DieColor.Green,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 2,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         },
         die3: {
             face: 3,
             color: DieColor.Purple,
-            frustratedHate: false
+            frustration: false
         }
     },
     {
@@ -582,7 +582,7 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 3,
             color: DieColor.Red,
-            frustratedHate: true
+            frustration: true
         }
     },
     {
@@ -593,12 +593,12 @@ export const BARRIER_CHIT_DEFINITIONS: BarrierChitDefinition[] = [
         die1: {
             face: 4,
             color: DieColor.White,
-            frustratedHate: true
+            frustration: true
         },
         die2: {
             face: 5,
             color: DieColor.White,
-            frustratedHate: false
+            frustration: false
         }
     }
 ]

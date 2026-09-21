@@ -7,6 +7,16 @@ import { mapCardHasPort } from "../MapCard/mapCardDefinitions";
 
 export const IDEA_CARD_DEFINITIONS: IdeaCardDefinition[] = [
     {
+        firebrandRating: 7,
+        cardName: "Anti-West Donghak Democracy",
+        sphere: Sphere.East,
+        culturalDiffusion: false,
+        freedom1: Freedom.Feather,
+        freedom2: Freedom.Comet,
+        impact1: { impact: Impacts.Post, targetPort: { cardNumber: 5, port: "portOne" } },
+        ops1: Ops.Plebiscite
+    },
+    {
         firebrandRating: 44,
         cardName: "Barbary Wars",
         sphere: Sphere.East,
