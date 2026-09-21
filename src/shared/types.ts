@@ -5,5 +5,5 @@ import type { FinanceBoardState } from "../features/FinanceBoard/financeBoard.ty
 export interface GameState {
     mapCards: Record<number, MapCardState>;
     revolutionCards: Record<number, RevolutionCardState>;
-    financeBoards: Record<number, FinanceBoardState>;
+    financeBoards: Record<string, FinanceBoardState>;
 }
