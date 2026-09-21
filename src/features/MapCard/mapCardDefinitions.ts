@@ -1,4 +1,4 @@
-import type { MapCardDefinition } from "./mapCard.types";
+import type { MapCardDefinition, MapCardPortReference } from "./mapCard.types";
 import { Faction } from "../../shared/factions";
 import { Sphere } from "../../shared/spheres";
 
@@ -165,3 +165,9 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         coastalWest: true,
     }
 ];
+
+export function mapCardHasPort(reference: MapCardPortReference): boolean {
+    const def = MAP_CARD_DEFINITIONS.find(d => d.cardNumber === reference.cardNumber);
+    if (!def) return false;
+    return reference.port === "portOne" ? true : def.portTwo !== undefined;
+}
