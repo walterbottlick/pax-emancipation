@@ -2,7 +2,7 @@ import type { IdeaCardDefinition } from "./ideaCard.types";
 import { Sphere } from "../../shared/spheres";
 import { Freedom } from "../../shared/freedoms";
 import { Ops } from "../../shared/ops";
-import { Impacts } from "../../shared/impacts";
+import { Impacts, BarrierColor } from "../../shared/impacts";
 import { mapCardHasPort } from "../MapCard/mapCardDefinitions";
 
 export const IDEA_CARD_DEFINITIONS: IdeaCardDefinition[] = [
@@ -30,6 +30,18 @@ export const IDEA_CARD_DEFINITIONS: IdeaCardDefinition[] = [
         ops1: Ops.Maritime,
         ops2: Ops.Westernize
     },
+    {
+        firebrandRating: 83,
+        cardName: "Emancipation Edicts",
+        sphere: Sphere.East,
+        culturalDiffusion: false,
+        freedom1: Freedom.Lock,
+        freedom2: Freedom.Comet,
+        impact1: { impact: Impacts.ClaimBarrier, barrierColor: BarrierColor.Red },
+        ops1: Ops.Manumission,
+        ops2: Ops.Literacy,
+        ops3: Ops.Westernize
+    },
 ];
 
 
@@ -38,7 +50,7 @@ export const IDEA_CARD_DEFINITIONS: IdeaCardDefinition[] = [
 function validateIdeaCardDefinitions(definitions: IdeaCardDefinition[]): void {
     for (const def of definitions) {
         for (const impact of [def.impact1, def.impact2]) {
-            if (impact !== undefined && typeof impact === "object" && !mapCardHasPort(impact.targetPort)) {
+            if (impact !== undefined && typeof impact === "object" && impact.impact === Impacts.Post && !mapCardHasPort(impact.targetPort)) {
                 throw new Error(
                     `Idea card "${def.cardName}" has a Post impact targeting card #${impact.targetPort.cardNumber} ${impact.targetPort.port}, which does not exist.`
                 );

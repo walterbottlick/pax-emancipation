@@ -1,12 +1,13 @@
 import type { Sphere } from "../../shared/spheres";
 import type { Freedom } from "../../shared/freedoms";
 import type { Ops } from "../../shared/ops";
-import { Impacts } from "../../shared/impacts";
+import { Impacts, type BarrierColor } from "../../shared/impacts";
 import type { MapCardPortReference } from "../MapCard/mapCard.types";
 
 export type IdeaCardImpact =
-    | Exclude<Impacts, typeof Impacts.Post>
-    | { impact: typeof Impacts.Post; targetPort: MapCardPortReference };
+    | Exclude<Impacts, typeof Impacts.Post | typeof Impacts.ClaimBarrier>
+    | { impact: typeof Impacts.Post; targetPort: MapCardPortReference }
+    | { impact: typeof Impacts.ClaimBarrier; barrierColor: BarrierColor };
 
 export function ideaCardImpactValue(impact: IdeaCardImpact): Impacts {
     return typeof impact === "object" ? impact.impact : impact;
