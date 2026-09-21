@@ -10,7 +10,8 @@ export interface IdeaCardDefinition {
     culturalDiffusion: boolean;
     freedom1: Freedom;
     freedom2: Freedom;
-    impact: Impacts;
+    impact1?: Impacts;
+    impact2?: Impacts;
     ops1?: Ops;
     ops2?: Ops;
     ops3?: Ops;
