@@ -1,7 +1,16 @@
 import type { Sphere } from "../../shared/spheres";
 import type { Freedom } from "../../shared/freedoms";
 import type { Ops } from "../../shared/ops";
-import type { Impacts } from "../../shared/impacts";
+import { Impacts } from "../../shared/impacts";
+import type { MapCardPortReference } from "../MapCard/mapCard.types";
+
+export type IdeaCardImpact =
+    | Exclude<Impacts, typeof Impacts.Post>
+    | { impact: typeof Impacts.Post; targetPort: MapCardPortReference };
+
+export function ideaCardImpactValue(impact: IdeaCardImpact): Impacts {
+    return typeof impact === "object" ? impact.impact : impact;
+}
 
 export interface IdeaCardDefinition {
     firebrandRating: number;
@@ -10,8 +19,8 @@ export interface IdeaCardDefinition {
     culturalDiffusion: boolean;
     freedom1: Freedom;
     freedom2: Freedom;
-    impact1?: Impacts;
-    impact2?: Impacts;
+    impact1?: IdeaCardImpact;
+    impact2?: IdeaCardImpact;
     ops1?: Ops;
     ops2?: Ops;
     ops3?: Ops;
