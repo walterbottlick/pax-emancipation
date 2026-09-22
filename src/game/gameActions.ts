@@ -14,4 +14,8 @@ export type GameAction =
     | { type: "MOVE_AGENT"; faction: Faction; from: FinanceSpace; to: FinanceSpace }
     | { type: "ADD_AGENT"; faction: Faction; space: FinanceSpace }
     | { type: "REMOVE_AGENT"; faction: Faction; space: FinanceSpace }
+    | { type: "SET_SLAVER_CHIT"; spaceNumber: number; present: boolean }
+    | { type: "SET_SHIP"; spaceNumber: number; present: boolean }
+    | { type: "SET_MARINE"; spaceNumber: number; present: boolean }
+    | { type: "MOVE_MARINE"; from: number; to: number }
     | { type: "RESET_GAME" };

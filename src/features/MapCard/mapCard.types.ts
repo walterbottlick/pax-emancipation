@@ -8,6 +8,8 @@ export interface MapCardPortReference {
     port: PortSlot;
 }
 
+export type CardinalDirection = "North" | "South" | "East" | "West";
+
 export interface MapCardDefinition {
     cardNumber: number;
     serfdomTitle: string;
@@ -20,10 +22,6 @@ export interface MapCardDefinition {
     portTwoDefaultAdmin?: Faction;
     portTwoSlaveSpaces?: number;
     dissentSpaces: number;
-    coastalNorth: boolean;
-    coastalSouth: boolean;
-    coastalEast: boolean;
-    coastalWest: boolean;
 }
 
 export interface MapCardState {

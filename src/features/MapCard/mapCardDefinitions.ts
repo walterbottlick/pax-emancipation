@@ -15,10 +15,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: true,
-        coastalWest: false,
     },
     {
         cardNumber: 2,
@@ -32,10 +28,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: true,
     },
     {
         cardNumber: 3,
@@ -49,10 +41,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Philanthropists,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: false,
     },
     {
         cardNumber: 4,
@@ -66,10 +54,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
     },
     {
         cardNumber: 5,
@@ -83,10 +67,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: true,
     },
     {
         cardNumber: 6,
@@ -97,10 +77,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 1,
         dissentSpaces: 2,
-        coastalNorth: true,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
     },
     {
         cardNumber: 7,
@@ -111,10 +87,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Evangelicals,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: false,
-        coastalSouth: false,
-        coastalWest: true,
     },
     {
         cardNumber: 8,
@@ -128,10 +100,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
     },
     {
         cardNumber: 9,
@@ -145,10 +113,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 5,
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: true,
     },
     {
         cardNumber: 10,
@@ -159,10 +123,6 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Parliament,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: false,
-        coastalSouth: false,
-        coastalWest: true,
     }
 ];
 

@@ -5,6 +5,8 @@ import { Faction } from "../shared/factions";
 import { buildInitialRevolutionCardState } from "../features/RevolutionCard/revolutionCard.types";
 import { FINANCE_BOARD_DEFINITIONS } from "../features/FinanceBoard/financeBoardDefinitions";
 import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeBoard.types";
+import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpaceDefinitions";
+import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -162,6 +164,64 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "SET_SLAVER_CHIT":
+            return {
+                ...state,
+                coastalSpaces: {
+                    ...state.coastalSpaces,
+                    [action.spaceNumber]: {
+                        ...state.coastalSpaces[action.spaceNumber],
+                        slaverChitPresent: action.present,
+                    },
+                },
+            };
+
+        case "SET_SHIP": {
+            const space = state.coastalSpaces[action.spaceNumber];
+            if (action.present && space.ship) return state;
+            if (!action.present && !space.ship) return state;
+            return {
+                ...state,
+                coastalSpaces: {
+                    ...state.coastalSpaces,
+                    [action.spaceNumber]: {
+                        ...space,
+                        ship: action.present ? { hasMarine: false } : undefined,
+                    },
+                },
+            };
+        }
+
+        case "SET_MARINE": {
+            const space = state.coastalSpaces[action.spaceNumber];
+            if (!space.ship) return state;
+            return {
+                ...state,
+                coastalSpaces: {
+                    ...state.coastalSpaces,
+                    [action.spaceNumber]: {
+                        ...space,
+                        ship: { hasMarine: action.present },
+                    },
+                },
+            };
+        }
+
+        case "MOVE_MARINE": {
+            const fromSpace = state.coastalSpaces[action.from];
+            const toSpace = state.coastalSpaces[action.to];
+            if (!fromSpace.ship?.hasMarine) return state;
+            if (!toSpace.ship || toSpace.ship.hasMarine) return state;
+            return {
+                ...state,
+                coastalSpaces: {
+                    ...state.coastalSpaces,
+                    [action.from]: { ...fromSpace, ship: { hasMarine: false } },
+                    [action.to]: { ...toSpace, ship: { hasMarine: true } },
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -189,6 +249,9 @@ export function buildInitialGameState(): GameState {
         ),
         financeBoards: Object.fromEntries(
             FINANCE_BOARD_DEFINITIONS.map(def => [def.faction, buildInitialFinanceBoardState()])
+        ),
+        coastalSpaces: Object.fromEntries(
+            COASTAL_SPACE_DEFINITIONS.map(def => [def.spaceNumber, buildInitialCoastalSpaceState()])
         ),
     };
 }
