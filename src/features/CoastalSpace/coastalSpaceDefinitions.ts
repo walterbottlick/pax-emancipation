@@ -92,6 +92,8 @@ export function coastalSpaceSlaverChit(space: CoastalSpaceDefinition): SlaverChi
     return SLAVER_CHIT_DEFINITIONS.find(chit => chit.bloodProduct === space.bloodProduct)!;
 }
 
+// Validate that coastal spaces do not reference map cards or slaver chits that don't exist
+// Can potentially be removed once the game is fully implemented and all coastal spaces are known to be valid, but a nice safety check to have
 function validateCoastalSpaceDefinitions(definitions: CoastalSpaceDefinition[]): void {
     for (const space of definitions) {
         if (!MAP_CARD_DEFINITIONS.some(c => c.cardNumber === space.cardA)) {
