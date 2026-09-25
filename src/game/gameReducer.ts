@@ -67,17 +67,20 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
                 },
             };
 
-        case "SET_DISEASE":
+        case "SET_DISEASE": {
+            const def = MAP_CARD_DEFINITIONS.find(d => d.cardNumber === action.cardNumber)!;
+            if (!def.disease) return state;
             return {
                 ...state,
                 mapCards: {
                     ...state.mapCards,
                     [action.cardNumber]: {
                         ...state.mapCards[action.cardNumber],
-                        disease: action.present,
+                        diseasePresent: action.present,
                     },
                 },
             };
+        }
 
         case "ADD_REVOLUTIONARY": {
             const cardState = state.revolutionCards[action.cardNumber];
@@ -240,7 +243,7 @@ export function buildInitialGameState(): GameState {
                     portOneAdmin: Faction.None,
                     portTwoAdmin: def.portTwo ? Faction.None : undefined,
                     anarchy: 0,
-                    disease: false,
+                    diseasePresent: def.disease ? true : undefined,
                 },
             ])
         ),

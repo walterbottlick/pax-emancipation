@@ -22,6 +22,7 @@ export interface MapCardDefinition {
     portTwoDefaultAdmin?: Faction;
     portTwoSlaveSpaces?: number;
     dissentSpaces: number;
+    disease: boolean;
 }
 
 export interface MapCardState {
@@ -29,5 +30,5 @@ export interface MapCardState {
     portOneAdmin: Faction;
     portTwoAdmin?: Faction;
     anarchy: number;
-    disease: boolean;
+    diseasePresent?: boolean;
 }

@@ -15,6 +15,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 2,
+        disease: false
     },
     {
         cardNumber: 2,
@@ -28,6 +29,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 2,
+        disease: false
     },
     {
         cardNumber: 3,
@@ -41,6 +43,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Philanthropists,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
+        disease: false
     },
     {
         cardNumber: 4,
@@ -54,6 +57,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 3,
+        disease: false
     },
     {
         cardNumber: 5,
@@ -67,6 +71,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
+        disease: false
     },
     {
         cardNumber: 6,
@@ -77,6 +82,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 1,
         dissentSpaces: 2,
+        disease: false
     },
     {
         cardNumber: 7,
@@ -87,6 +93,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Evangelicals,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
+        disease: true
     },
     {
         cardNumber: 8,
@@ -100,6 +107,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 1,
+        disease: true
     },
     {
         cardNumber: 9,
@@ -113,6 +121,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 5,
         dissentSpaces: 2,
+        disease: false
     },
     {
         cardNumber: 10,
@@ -123,6 +132,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Parliament,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
+        disease: true
     }
 ];
 

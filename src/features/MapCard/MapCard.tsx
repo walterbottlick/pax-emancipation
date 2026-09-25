@@ -13,8 +13,12 @@ function MapCard({ definition, state }: MapCardProps) {
         <div className="map-card">
             <h2>{displayTitle}</h2>
             <div className="admin-tracker">
-                <p>Port One Admin: {state.portOneAdmin}</p>
-                <p>Default: {definition.portOneDefaultAdmin}</p>
+                <p>{definition.portOne} Admin: {state.portOneAdmin}</p>
+                <p>{definition.portOne} Slave Spaces: {definition.portOneSlaveSpaces}</p>
+                <p>{definition.portTwo} Admin: {state.portTwoAdmin}</p>
+                <p>{definition.portTwo} Slave Spaces: {definition.portTwoSlaveSpaces}</p>
+                <p>Dissent Spaces: {definition.dissentSpaces}</p>
+                {state.diseasePresent !== undefined && <p>Disease: {state.diseasePresent ? "Yes" : "No"}</p>}
             </div>
         </div>
     );
