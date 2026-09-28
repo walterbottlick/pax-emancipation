@@ -46,6 +46,12 @@
 .admin-tracker .port-1b {
     border: 2px solid #451fab;
     border-top: 0;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-1c {
+    border: 2px solid #451fab;
+    border-top: 0;
     margin-bottom: 5px;
 }
 
@@ -55,6 +61,12 @@
 }
 
 .admin-tracker .port-2b {
+    border: 2px solid #c75a06;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-2c {
     border: 2px solid #c75a06;
     border-top: 0;
     margin-bottom: 5px;
