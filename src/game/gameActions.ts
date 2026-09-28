@@ -19,4 +19,8 @@ export type GameAction =
     | { type: "SET_MARINE"; spaceNumber: number; present: boolean }
     | { type: "MOVE_MARINE"; from: number; to: number }
     | { type: "PLACE_FACTORY"; cardNumber: number; faction: Faction }
+    | { type: "ADD_MEEPLE_TO_PORT"; cardNumber: number; port: PortSlot; faction: Faction }
+    | { type: "REMOVE_MEEPLE_FROM_PORT"; cardNumber: number; port: PortSlot; index: number }
+    | { type: "ADD_MEEPLE_TO_DISSIDENTS"; cardNumber: number; faction: Faction }
+    | { type: "REMOVE_MEEPLE_FROM_DISSIDENTS"; cardNumber: number; index: number }
     | { type: "RESET_GAME" };

@@ -7,6 +7,7 @@ import { FINANCE_BOARD_DEFINITIONS } from "../features/FinanceBoard/financeBoard
 import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeBoard.types";
 import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpaceDefinitions";
 import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
+import { meepleSupply } from "./gameQueries";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -241,6 +242,73 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "ADD_MEEPLE_TO_PORT": {
+            const def = MAP_CARD_DEFINITIONS.find(d => d.cardNumber === action.cardNumber)!;
+            const cardState = state.mapCards[action.cardNumber];
+            const key = action.port === "portOne" ? "portOneFreedmen" : "portTwoFreedmen";
+            const capacity = action.port === "portOne" ? def.portOneSlaveSpaces : def.portTwoSlaveSpaces;
+            const freedmen = cardState[key] ?? [];
+            if (capacity === undefined || freedmen.length >= capacity) return state;
+            if (meepleSupply(state, action.faction) <= 0) return state;
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        [key]: [...freedmen, action.faction],
+                    },
+                },
+            };
+        }
+
+        case "REMOVE_MEEPLE_FROM_PORT": {
+            const cardState = state.mapCards[action.cardNumber];
+            const key = action.port === "portOne" ? "portOneFreedmen" : "portTwoFreedmen";
+            const freedmen = cardState[key] ?? [];
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        [key]: freedmen.filter((_, index) => index !== action.index),
+                    },
+                },
+            };
+        }
+
+        case "ADD_MEEPLE_TO_DISSIDENTS": {
+            const def = MAP_CARD_DEFINITIONS.find(d => d.cardNumber === action.cardNumber)!;
+            const cardState = state.mapCards[action.cardNumber];
+            if (cardState.dissidents.length >= def.dissentSpaces) return state;
+            if (meepleSupply(state, action.faction) <= 0) return state;
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        dissidents: [...cardState.dissidents, action.faction],
+                    },
+                },
+            };
+        }
+
+        case "REMOVE_MEEPLE_FROM_DISSIDENTS": {
+            const cardState = state.mapCards[action.cardNumber];
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        dissidents: cardState.dissidents.filter((_, index) => index !== action.index),
+                    },
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -261,6 +329,9 @@ export function buildInitialGameState(): GameState {
                     anarchy: 0,
                     diseasePresent: def.disease ? true : undefined,
                     factories: [],
+                    portOneFreedmen: [],
+                    portTwoFreedmen: def.portTwo ? [] : undefined,
+                    dissidents: [],
                 },
             ])
         ),

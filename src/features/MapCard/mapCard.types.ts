@@ -32,4 +32,7 @@ export interface MapCardState {
     anarchy: number;
     diseasePresent?: boolean;
     factories: Faction[];
+    portOneFreedmen: Faction[];
+    portTwoFreedmen?: Faction[];
+    dissidents: Faction[];
 }
