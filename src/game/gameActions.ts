@@ -11,9 +11,9 @@ export type GameAction =
     | { type: "SET_DISEASE"; cardNumber: number; present: boolean }
     | { type: "ADD_REVOLUTIONARY"; cardNumber: number; side: RevolutionCardSide; faction: Faction }
     | { type: "REMOVE_REVOLUTIONARY"; cardNumber: number; side: RevolutionCardSide; index: number }
-    | { type: "MOVE_AGENT"; faction: Faction; from: FinanceSpace; to: FinanceSpace }
-    | { type: "ADD_AGENT"; faction: Faction; space: FinanceSpace }
-    | { type: "REMOVE_AGENT"; faction: Faction; space: FinanceSpace }
+    | { type: "MOVE_FINANCIAL_AGENT"; boardFaction: Faction; agentFaction: Faction; from: FinanceSpace; to: FinanceSpace }
+    | { type: "ADD_FINANCIAL_AGENT"; boardFaction: Faction; agentFaction: Faction; space: FinanceSpace }
+    | { type: "REMOVE_FINANCIAL_AGENT"; boardFaction: Faction; agentFaction: Faction; space: FinanceSpace }
     | { type: "SET_SLAVER_CHIT"; spaceNumber: number; present: boolean }
     | { type: "SET_SHIP"; spaceNumber: number; present: boolean }
     | { type: "SET_MARINE"; spaceNumber: number; present: boolean }

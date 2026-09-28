@@ -7,7 +7,7 @@ import { FINANCE_BOARD_DEFINITIONS } from "../features/FinanceBoard/financeBoard
 import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeBoard.types";
 import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpaceDefinitions";
 import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
-import { meepleSupply } from "./gameQueries";
+import { meepleSupply, agentSupply } from "./gameQueries";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -44,12 +44,15 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
         case "PLACE_ADMIN": {
             const key = action.port === "portOne" ? "portOneAdmin" : "portTwoAdmin";
+            const cardState = state.mapCards[action.cardNumber];
+            if (cardState[key] !== Faction.None) return state;
+            if (agentSupply(state, action.faction) <= 0) return state;
             return {
                 ...state,
                 mapCards: {
                     ...state.mapCards,
                     [action.cardNumber]: {
-                        ...state.mapCards[action.cardNumber],
+                        ...cardState,
                         [key]: action.faction,
                     },
                 },
@@ -86,6 +89,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         case "ADD_REVOLUTIONARY": {
             const cardState = state.revolutionCards[action.cardNumber];
             const sideState = cardState[action.side];
+            if (agentSupply(state, action.faction) <= 0) return state;
             return {
                 ...state,
                 revolutionCards: {
@@ -117,51 +121,57 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
-        case "MOVE_AGENT": {
-            const board = state.financeBoards[action.faction];
-            if (board.agents[action.from] === 0) return state;
+        case "MOVE_FINANCIAL_AGENT": {
+            const board = state.financeBoards[action.boardFaction];
+            const fromAgents = board.agents[action.from];
+            const fromIndex = fromAgents.indexOf(action.agentFaction);
+            if (fromIndex === -1) return state;
             return {
                 ...state,
                 financeBoards: {
                     ...state.financeBoards,
-                    [action.faction]: {
+                    [action.boardFaction]: {
                         agents: {
                             ...board.agents,
-                            [action.from]: board.agents[action.from] - 1,
-                            [action.to]: board.agents[action.to] + 1,
+                            [action.from]: fromAgents.filter((_, index) => index !== fromIndex),
+                            [action.to]: [...board.agents[action.to], action.agentFaction],
                         },
                     },
                 },
             };
         }
 
-        case "ADD_AGENT": {
-            const board = state.financeBoards[action.faction];
+        case "ADD_FINANCIAL_AGENT": {
+            const board = state.financeBoards[action.boardFaction];
+            if (action.boardFaction !== Faction.Parliament && action.agentFaction !== action.boardFaction) return state;
+            if (agentSupply(state, action.agentFaction) <= 0) return state;
             return {
                 ...state,
                 financeBoards: {
                     ...state.financeBoards,
-                    [action.faction]: {
+                    [action.boardFaction]: {
                         agents: {
                             ...board.agents,
-                            [action.space]: board.agents[action.space] + 1,
+                            [action.space]: [...board.agents[action.space], action.agentFaction],
                         },
                     },
                 },
             };
         }
 
-        case "REMOVE_AGENT": {
-            const board = state.financeBoards[action.faction];
-            if (board.agents[action.space] === 0) return state;
+        case "REMOVE_FINANCIAL_AGENT": {
+            const board = state.financeBoards[action.boardFaction];
+            const agents = board.agents[action.space];
+            const index = agents.indexOf(action.agentFaction);
+            if (index === -1) return state;
             return {
                 ...state,
                 financeBoards: {
                     ...state.financeBoards,
-                    [action.faction]: {
+                    [action.boardFaction]: {
                         agents: {
                             ...board.agents,
-                            [action.space]: board.agents[action.space] - 1,
+                            [action.space]: agents.filter((_, i) => i !== index),
                         },
                     },
                 },
@@ -199,6 +209,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         case "SET_MARINE": {
             const space = state.coastalSpaces[action.spaceNumber];
             if (!space.ship) return state;
+            if (action.present && agentSupply(state, Faction.Parliament) <= 0) return state;
             return {
                 ...state,
                 coastalSpaces: {
@@ -339,7 +350,7 @@ export function buildInitialGameState(): GameState {
             MAP_CARD_DEFINITIONS.map(def => [def.cardNumber, buildInitialRevolutionCardState()])
         ),
         financeBoards: Object.fromEntries(
-            FINANCE_BOARD_DEFINITIONS.map(def => [def.faction, buildInitialFinanceBoardState()])
+            FINANCE_BOARD_DEFINITIONS.map(def => [def.faction, buildInitialFinanceBoardState(def.faction)])
         ),
         coastalSpaces: Object.fromEntries(
             COASTAL_SPACE_DEFINITIONS.map(def => [def.spaceNumber, buildInitialCoastalSpaceState()])
