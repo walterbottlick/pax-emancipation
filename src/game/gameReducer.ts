@@ -335,13 +335,13 @@ export function buildInitialGameState(): GameState {
                 def.cardNumber,
                 {
                     modernized: false,
-                    portOneAdmin: Faction.None,
-                    portTwoAdmin: def.portTwo ? Faction.None : undefined,
+                    portOneAdmin: def.portOneStartingAdmin ?? Faction.None,
+                    portTwoAdmin: def.portTwo ? (def.portTwoStartingAdmin ?? Faction.None) : undefined,
                     anarchy: 0,
                     diseasePresent: def.disease ? true : undefined,
                     factories: [],
-                    portOneFreedmen: [],
-                    portTwoFreedmen: def.portTwo ? [] : undefined,
+                    portOneFreedmen: def.portOneStartingFreedmen ?? [],
+                    portTwoFreedmen: def.portTwo ? (def.portTwoStartingFreedmen ?? []) : undefined,
                     dissidents: [],
                 },
             ])

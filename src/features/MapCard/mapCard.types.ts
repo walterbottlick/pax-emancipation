@@ -18,9 +18,13 @@ export interface MapCardDefinition {
     portOne: string;
     portOneDefaultAdmin: Faction;
     portOneSlaveSpaces: number;
+    portOneStartingAdmin?: Faction;
+    portOneStartingFreedmen?: Faction[];
     portTwo?: string;
     portTwoDefaultAdmin?: Faction;
     portTwoSlaveSpaces?: number;
+    portTwoStartingAdmin?: Faction;
+    portTwoStartingFreedmen?: Faction[];
     dissentSpaces: number;
     disease: boolean;
 }

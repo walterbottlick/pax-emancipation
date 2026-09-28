@@ -11,6 +11,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "Virginia",
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 2,
+        portOneStartingAdmin: Faction.Parliament,
         portTwo: "Caribbean",
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
@@ -25,9 +26,12 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "London",
         portOneDefaultAdmin: Faction.Parliament,
         portOneSlaveSpaces: 1,
+        portOneStartingAdmin: Faction.Parliament,
+        portOneStartingFreedmen: [Faction.Parliament],
         portTwo: "Nantes",
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
+        portTwoStartingFreedmen: [Faction.Philanthropists, Faction.Philanthropists, Faction.Evangelicals],
         dissentSpaces: 2,
         disease: false
     },
@@ -81,6 +85,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "Bahia",
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 1,
+        portOneStartingAdmin: Faction.Evangelicals,
         dissentSpaces: 2,
         disease: false
     },
@@ -120,6 +125,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwo: "Mughal",
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 5,
+        portTwoStartingAdmin: Faction.Philanthropists,
         dissentSpaces: 2,
         disease: false
     },
@@ -141,3 +147,20 @@ export function mapCardHasPort(reference: MapCardPortReference): boolean {
     if (!def) return false;
     return reference.port === "portOne" ? true : def.portTwo !== undefined;
 }
+
+function validateMapCardDefinitions(definitions: MapCardDefinition[]): void {
+    for (const def of definitions) {
+        if ((def.portOneStartingFreedmen?.length ?? 0) > def.portOneSlaveSpaces) {
+            throw new Error(`Map card #${def.cardNumber} (${def.portOne}) has more starting freedmen than slave spaces.`);
+        }
+        if (def.portTwo === undefined) {
+            if (def.portTwoStartingAdmin !== undefined || def.portTwoStartingFreedmen !== undefined) {
+                throw new Error(`Map card #${def.cardNumber} has portTwo starting data but no portTwo.`);
+            }
+        } else if ((def.portTwoStartingFreedmen?.length ?? 0) > (def.portTwoSlaveSpaces ?? 0)) {
+            throw new Error(`Map card #${def.cardNumber} (${def.portTwo}) has more starting freedmen than slave spaces.`);
+        }
+    }
+}
+
+validateMapCardDefinitions(MAP_CARD_DEFINITIONS);
