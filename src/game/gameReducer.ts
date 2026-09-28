@@ -225,6 +225,22 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "PLACE_FACTORY": {
+            const alreadyPlaced = Object.values(state.mapCards).some(cardState => cardState.factories.includes(action.faction));
+            if (alreadyPlaced) return state;
+            const cardState = state.mapCards[action.cardNumber];
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        factories: [...cardState.factories, action.faction],
+                    },
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -244,6 +260,7 @@ export function buildInitialGameState(): GameState {
                     portTwoAdmin: def.portTwo ? Faction.None : undefined,
                     anarchy: 0,
                     diseasePresent: def.disease ? true : undefined,
+                    factories: [],
                 },
             ])
         ),

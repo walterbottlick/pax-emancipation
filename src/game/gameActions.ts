@@ -18,4 +18,5 @@ export type GameAction =
     | { type: "SET_SHIP"; spaceNumber: number; present: boolean }
     | { type: "SET_MARINE"; spaceNumber: number; present: boolean }
     | { type: "MOVE_MARINE"; from: number; to: number }
+    | { type: "PLACE_FACTORY"; cardNumber: number; faction: Faction }
     | { type: "RESET_GAME" };

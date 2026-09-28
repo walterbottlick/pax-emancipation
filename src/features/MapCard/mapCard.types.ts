@@ -31,4 +31,5 @@ export interface MapCardState {
     portTwoAdmin?: Faction;
     anarchy: number;
     diseasePresent?: boolean;
+    factories: Faction[];
 }
