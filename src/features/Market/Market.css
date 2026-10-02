@@ -1,0 +1,45 @@
+.market {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid #000;
+}
+
+.market-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Market cards lie sideways, so a card's width and height swap. */
+.market-deck,
+.market-space {
+    box-sizing: border-box;
+    width: var(--card-height);
+    height: var(--card-width);
+    border-radius: 6px;
+}
+
+.market-deck {
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.market-deck-western {
+    background: rgb(60, 0, 163);
+}
+
+.market-deck-eastern {
+    background: rgb(163, 0, 90);
+}
+
+.market-space {
+    border: 2px dashed var(--border);
+}

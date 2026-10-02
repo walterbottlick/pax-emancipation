@@ -9,6 +9,8 @@ import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpace
 import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
 import { meepleSupply, agentSupply } from "./gameQueries";
 import { BARRIER_CHIT_DEFINITIONS } from "../features/BarrierChit/barrierChitDefinitions";
+import { splayCardId } from "../features/Splay/splay.types";
+import { buildInitialSplays } from "../features/Splay/splayDefinitions";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -338,6 +340,19 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "ADD_CARD_TO_SPLAY": {
+            const id = splayCardId(action.entry);
+            const alreadySplayed = Object.values(state.splays).some(entries => entries.some(entry => splayCardId(entry) === id));
+            if (alreadySplayed) return state;
+            return {
+                ...state,
+                splays: {
+                    ...state.splays,
+                    [action.splay]: [...state.splays[action.splay], action.entry],
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -378,5 +393,6 @@ export function buildInitialGameState(): GameState {
         coastalSpaces: Object.fromEntries(
             COASTAL_SPACE_DEFINITIONS.map(def => [def.spaceNumber, buildInitialCoastalSpaceState()])
         ),
+        splays: buildInitialSplays(),
     };
 }

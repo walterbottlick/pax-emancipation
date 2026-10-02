@@ -2,6 +2,7 @@ import { Faction } from "../shared/factions";
 import type { RevolutionCardSide } from "../features/RevolutionCard/revolutionCard.types";
 import type { FinanceSpace } from "../features/FinanceBoard/financeBoard.types";
 import type { PortSlot } from "../features/MapCard/mapCard.types";
+import type { SplayId, SplayCardEntry } from "../features/Splay/splay.types";
 
 export type GameAction =
     | { type: "FLIP_CARD"; cardNumber: number }
@@ -24,4 +25,5 @@ export type GameAction =
     | { type: "ADD_MEEPLE_TO_DISSIDENTS"; cardNumber: number; faction: Faction }
     | { type: "REMOVE_MEEPLE_FROM_DISSIDENTS"; cardNumber: number; index: number }
     | { type: "SET_BARRIER_CHIT"; cardNumber: number; chitNumber: number; present: boolean }
+    | { type: "ADD_CARD_TO_SPLAY"; splay: SplayId; entry: SplayCardEntry }
     | { type: "RESET_GAME" };
