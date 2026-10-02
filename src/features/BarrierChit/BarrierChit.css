@@ -33,6 +33,6 @@
 }
 
 .barrier-chit-empty {
-    border: none;
+    border: 2px dashed var(--border);
     background: transparent;
 }
