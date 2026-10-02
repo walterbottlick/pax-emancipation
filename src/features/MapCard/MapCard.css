@@ -5,11 +5,17 @@
     padding: 3em;
 }
 
+.map-card-column {
+    flex-basis: 20%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
 .map-card {
     aspect-ratio: 9 / 14;
     border: 1px solid var(--border);
     border-radius: 6px;
-    flex-basis: 20%;
     box-sizing: border-box;
     background: rgb(97, 147, 186);;
 }

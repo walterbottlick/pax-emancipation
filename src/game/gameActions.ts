@@ -23,4 +23,5 @@ export type GameAction =
     | { type: "REMOVE_MEEPLE_FROM_PORT"; cardNumber: number; port: PortSlot; index: number }
     | { type: "ADD_MEEPLE_TO_DISSIDENTS"; cardNumber: number; faction: Faction }
     | { type: "REMOVE_MEEPLE_FROM_DISSIDENTS"; cardNumber: number; index: number }
+    | { type: "SET_BARRIER_CHIT"; cardNumber: number; chitNumber: number; present: boolean }
     | { type: "RESET_GAME" };

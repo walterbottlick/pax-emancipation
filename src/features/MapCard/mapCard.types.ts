@@ -39,4 +39,5 @@ export interface MapCardState {
     portOneFreedmen: Faction[];
     portTwoFreedmen?: Faction[];
     dissidents: Faction[];
+    barrierChits: Record<number, boolean>;
 }

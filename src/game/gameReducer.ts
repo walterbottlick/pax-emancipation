@@ -8,6 +8,7 @@ import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeB
 import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpaceDefinitions";
 import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
 import { meepleSupply, agentSupply } from "./gameQueries";
+import { BARRIER_CHIT_DEFINITIONS } from "../features/BarrierChit/barrierChitDefinitions";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
@@ -320,6 +321,23 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "SET_BARRIER_CHIT": {
+            const cardState = state.mapCards[action.cardNumber];
+            return {
+                ...state,
+                mapCards: {
+                    ...state.mapCards,
+                    [action.cardNumber]: {
+                        ...cardState,
+                        barrierChits: {
+                            ...cardState.barrierChits,
+                            [action.chitNumber]: action.present,
+                        },
+                    },
+                },
+            };
+        }
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -343,6 +361,11 @@ export function buildInitialGameState(): GameState {
                     portOneFreedmen: def.portOneStartingFreedmen ?? [],
                     portTwoFreedmen: def.portTwo ? (def.portTwoStartingFreedmen ?? []) : undefined,
                     dissidents: [],
+                    barrierChits: Object.fromEntries(
+                        BARRIER_CHIT_DEFINITIONS
+                            .filter(chit => chit.mapCardNumber === def.cardNumber)
+                            .map(chit => [chit.chitNumber, true])
+                    ),
                 },
             ])
         ),
