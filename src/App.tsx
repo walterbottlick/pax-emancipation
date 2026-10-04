@@ -5,6 +5,7 @@ import { useGameState } from "./game/useGame";
 import { MAP_CARD_DEFINITIONS } from "./features/MapCard/mapCardDefinitions";
 import Splay from "./features/Splay/Splay";
 import Market from "./features/Market/Market";
+import PlayerArea from "./features/PlayerArea/PlayerArea";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function Board() {
                 </div>
                 <Market />
             </div>
+            <PlayerArea gameState={gameState} />
         </div>
     );
 }

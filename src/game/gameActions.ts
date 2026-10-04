@@ -3,6 +3,7 @@ import type { RevolutionCardSide } from "../features/RevolutionCard/revolutionCa
 import type { FinanceSpace } from "../features/FinanceBoard/financeBoard.types";
 import type { PortSlot } from "../features/MapCard/mapCard.types";
 import type { SplayId, SplayCardEntry } from "../features/Splay/splay.types";
+import type { PlayersState } from "../features/PlayerArea/players.types";
 
 export type GameAction =
     | { type: "FLIP_CARD"; cardNumber: number }
@@ -26,4 +27,6 @@ export type GameAction =
     | { type: "REMOVE_MEEPLE_FROM_DISSIDENTS"; cardNumber: number; index: number }
     | { type: "SET_BARRIER_CHIT"; cardNumber: number; chitNumber: number; present: boolean }
     | { type: "ADD_CARD_TO_SPLAY"; splay: SplayId; entry: SplayCardEntry }
+    | { type: "SET_PLAYERS"; players: PlayersState }
+    | { type: "SET_CURRENT_FACTION"; faction: Faction }
     | { type: "RESET_GAME" };

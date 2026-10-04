@@ -7,29 +7,25 @@ import { FINANCE_BOARD_DEFINITIONS } from "../features/FinanceBoard/financeBoard
 import { buildInitialFinanceBoardState } from "../features/FinanceBoard/financeBoard.types";
 import { COASTAL_SPACE_DEFINITIONS } from "../features/CoastalSpace/coastalSpaceDefinitions";
 import { buildInitialCoastalSpaceState } from "../features/CoastalSpace/coastalSpace.types";
-import { meepleSupply, agentSupply } from "./gameQueries";
+import { meepleSupply, agentSupply, factorySupply } from "./gameQueries";
 import { BARRIER_CHIT_DEFINITIONS } from "../features/BarrierChit/barrierChitDefinitions";
 import { splayCardId } from "../features/Splay/splay.types";
 import { buildInitialSplays } from "../features/Splay/splayDefinitions";
+import { buildInitialPlayers, isValidPlayers } from "../features/PlayerArea/players.types";
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
     switch (action.type) {
-        case "FLIP_CARD": {
-            const def = MAP_CARD_DEFINITIONS.find(d => d.cardNumber === action.cardNumber)!;
-            const current = state.mapCards[action.cardNumber];
+        case "FLIP_CARD":
             return {
                 ...state,
                 mapCards: {
                     ...state.mapCards,
                     [action.cardNumber]: {
-                        ...current,
+                        ...state.mapCards[action.cardNumber],
                         modernized: true,
-                        portOneAdmin: current.portOneAdmin === Faction.None ? def.portOneDefaultAdmin : current.portOneAdmin,
-                        portTwoAdmin: current.portTwoAdmin === Faction.None ? def.portTwoDefaultAdmin : current.portTwoAdmin,
                     },
                 },
             };
-        }
 
         case "KILL_ADMIN": {
             const key = action.port === "portOne" ? "portOneAdmin" : "portTwoAdmin";
@@ -241,8 +237,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         }
 
         case "PLACE_FACTORY": {
-            const alreadyPlaced = Object.values(state.mapCards).some(cardState => cardState.factories.includes(action.faction));
-            if (alreadyPlaced) return state;
+            if (factorySupply(state, action.faction) <= 0) return state;
             const cardState = state.mapCards[action.cardNumber];
             return {
                 ...state,
@@ -353,6 +348,14 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
             };
         }
 
+        case "SET_PLAYERS":
+            if (!isValidPlayers(action.players)) return state;
+            return { ...state, players: action.players };
+
+        case "SET_CURRENT_FACTION":
+            if (!state.players.factions.includes(action.faction)) return state;
+            return { ...state, players: { ...state.players, currentFaction: action.faction } };
+
         case "RESET_GAME":
             return buildInitialGameState();
 
@@ -394,5 +397,6 @@ export function buildInitialGameState(): GameState {
             COASTAL_SPACE_DEFINITIONS.map(def => [def.spaceNumber, buildInitialCoastalSpaceState()])
         ),
         splays: buildInitialSplays(),
+        players: buildInitialPlayers(),
     };
 }

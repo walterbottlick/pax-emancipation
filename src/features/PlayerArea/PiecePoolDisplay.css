@@ -1,0 +1,14 @@
+.piece-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1c1c1c;
+}
+
+.piece-pool-vertical {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: left;
+}

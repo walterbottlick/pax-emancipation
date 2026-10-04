@@ -62,3 +62,27 @@ export function agentsPlaced(state: GameState, faction: Faction): number {
 export function agentSupply(state: GameState, faction: Faction): number {
     return AGENT_SUPPLY_LIMIT - agentsPlaced(state, faction);
 }
+
+export const FACTORY_SUPPLY_LIMIT = 1;
+
+export function factoriesPlaced(state: GameState, faction: Faction): number {
+    return Object.values(state.mapCards).reduce((total, cardState) => total + countOccurrences(faction, cardState.factories), 0);
+}
+
+export function factorySupply(state: GameState, faction: Faction): number {
+    return FACTORY_SUPPLY_LIMIT - factoriesPlaced(state, faction);
+}
+
+export interface PiecePool {
+    agents: number;
+    meeples: number;
+    factory: number;
+}
+
+export function piecePool(state: GameState, faction: Faction): PiecePool {
+    return {
+        agents: agentSupply(state, faction),
+        meeples: meepleSupply(state, faction),
+        factory: factorySupply(state, faction),
+    };
+}

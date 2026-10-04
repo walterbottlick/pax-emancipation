@@ -1,4 +1,4 @@
-import type { Faction } from "../../shared/factions";
+import { Faction } from "../../shared/factions";
 import type { Sphere } from "../../shared/spheres";
 
 export type PortSlot = "portOne" | "portTwo";
@@ -40,4 +40,18 @@ export interface MapCardState {
     portTwoFreedmen?: Faction[];
     dissidents: Faction[];
     barrierChits: Record<number, boolean>;
+}
+
+/**
+ * Who gets credit for a port. portOneAdmin/portTwoAdmin hold only real agent
+ * pieces; the printed default admin applies only once the card is modernized
+ * and no agent is on the port, and it is never a placed piece.
+ */
+export function portAdminCredit(definition: MapCardDefinition, state: MapCardState, port: PortSlot): Faction {
+    const placed = port === "portOne" ? state.portOneAdmin : state.portTwoAdmin;
+    if (placed === undefined) return Faction.None;
+    if (placed !== Faction.None) return placed;
+    if (!state.modernized) return Faction.None;
+    const fallback = port === "portOne" ? definition.portOneDefaultAdmin : definition.portTwoDefaultAdmin;
+    return fallback ?? Faction.None;
 }
