@@ -11,14 +11,12 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "Virginia",
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 2,
+        portOneStartingAdmin: Faction.Parliament,
         portTwo: "Caribbean",
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: true,
-        coastalWest: false,
+        disease: false
     },
     {
         cardNumber: 2,
@@ -28,14 +26,14 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "London",
         portOneDefaultAdmin: Faction.Parliament,
         portOneSlaveSpaces: 1,
+        portOneStartingAdmin: Faction.Parliament,
+        portOneStartingFreedmen: [Faction.Parliament],
         portTwo: "Nantes",
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
+        portTwoStartingFreedmen: [Faction.Philanthropists, Faction.Philanthropists, Faction.Evangelicals],
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: true,
+        disease: false
     },
     {
         cardNumber: 3,
@@ -49,10 +47,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Philanthropists,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: false,
+        disease: false
     },
     {
         cardNumber: 4,
@@ -66,10 +61,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
+        disease: false
     },
     {
         cardNumber: 5,
@@ -83,10 +75,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Evangelicals,
         portTwoSlaveSpaces: 3,
         dissentSpaces: 3,
-        coastalNorth: false,
-        coastalEast: false,
-        coastalSouth: true,
-        coastalWest: true,
+        disease: false
     },
     {
         cardNumber: 6,
@@ -96,11 +85,9 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOne: "Bahia",
         portOneDefaultAdmin: Faction.Philanthropists,
         portOneSlaveSpaces: 1,
+        portOneStartingAdmin: Faction.Evangelicals,
         dissentSpaces: 2,
-        coastalNorth: true,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
+        disease: false
     },
     {
         cardNumber: 7,
@@ -111,10 +98,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Evangelicals,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: false,
-        coastalSouth: false,
-        coastalWest: true,
+        disease: true
     },
     {
         cardNumber: 8,
@@ -128,10 +112,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: false,
+        disease: true
     },
     {
         cardNumber: 9,
@@ -144,11 +125,9 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portTwo: "Mughal",
         portTwoDefaultAdmin: Faction.Parliament,
         portTwoSlaveSpaces: 5,
+        portTwoStartingAdmin: Faction.Philanthropists,
         dissentSpaces: 2,
-        coastalNorth: false,
-        coastalEast: true,
-        coastalSouth: false,
-        coastalWest: true,
+        disease: false
     },
     {
         cardNumber: 10,
@@ -159,10 +138,7 @@ export const MAP_CARD_DEFINITIONS: MapCardDefinition[] = [
         portOneDefaultAdmin: Faction.Parliament,
         portOneSlaveSpaces: 1,
         dissentSpaces: 1,
-        coastalNorth: true,
-        coastalEast: false,
-        coastalSouth: false,
-        coastalWest: true,
+        disease: true
     }
 ];
 
@@ -171,3 +147,20 @@ export function mapCardHasPort(reference: MapCardPortReference): boolean {
     if (!def) return false;
     return reference.port === "portOne" ? true : def.portTwo !== undefined;
 }
+
+function validateMapCardDefinitions(definitions: MapCardDefinition[]): void {
+    for (const def of definitions) {
+        if ((def.portOneStartingFreedmen?.length ?? 0) > def.portOneSlaveSpaces) {
+            throw new Error(`Map card #${def.cardNumber} (${def.portOne}) has more starting freedmen than slave spaces.`);
+        }
+        if (def.portTwo === undefined) {
+            if (def.portTwoStartingAdmin !== undefined || def.portTwoStartingFreedmen !== undefined) {
+                throw new Error(`Map card #${def.cardNumber} has portTwo starting data but no portTwo.`);
+            }
+        } else if ((def.portTwoStartingFreedmen?.length ?? 0) > (def.portTwoSlaveSpaces ?? 0)) {
+            throw new Error(`Map card #${def.cardNumber} (${def.portTwo}) has more starting freedmen than slave spaces.`);
+        }
+    }
+}
+
+validateMapCardDefinitions(MAP_CARD_DEFINITIONS);

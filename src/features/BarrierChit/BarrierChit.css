@@ -1,0 +1,38 @@
+.barrier-chit-board {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    padding: 0.25em 0;
+}
+
+.barrier-chit-board-above {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.barrier-chit-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.3em;
+}
+
+.barrier-chit {
+    width: 44%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.1;
+    padding: 0.2em;
+    color: #1c1c1c;
+}
+
+.barrier-chit-empty {
+    border: 2px dashed var(--border);
+    background: transparent;
+}

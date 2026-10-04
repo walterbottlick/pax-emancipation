@@ -5,11 +5,86 @@
     padding: 3em;
 }
 
+.map-card-column {
+    flex-basis: 20%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
 .map-card {
     aspect-ratio: 9 / 14;
     border: 1px solid var(--border);
     border-radius: 6px;
-    flex-basis: 20%;
     box-sizing: border-box;
     background: rgb(97, 147, 186);;
 }
+
+.map-card p {
+    color: #1c1c1c;
+    font-size: 12px;
+    margin: 0;
+    line-height: 2;
+}
+
+.map-card h2 {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.24px;
+    margin: 0 0 8px;
+    @media (max-width: 1024px) {
+        font-size: 20px;
+    }
+}
+
+
+/** Testing styles for map card playtest copy. Remove once card graphics are being used **/
+
+.admin-tracker {
+    padding: 5px;
+}
+
+.admin-tracker .port-1a {
+    border: 2px solid #451fab;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-1b {
+    border: 2px solid #451fab;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-1c {
+    border: 2px solid #451fab;
+    border-top: 0;
+    margin-bottom: 5px;
+}
+
+.admin-tracker .port-2a {
+    border: 2px solid #c75a06;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-2b {
+    border: 2px solid #c75a06;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.admin-tracker .port-2c {
+    border: 2px solid #c75a06;
+    border-top: 0;
+    margin-bottom: 5px;
+}
+
+.admin-tracker .dissent {
+    border: 2px solid #000;
+    margin-bottom: 5px;
+}
+
+.admin-tracker .disease {
+    border: 2px solid #93c914;
+}
+
+/** End testing styles **/

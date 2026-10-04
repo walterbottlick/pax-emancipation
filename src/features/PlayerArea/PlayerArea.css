@@ -1,0 +1,29 @@
+.player-area {
+    --board-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--board-gap);
+    align-items: start;
+    padding: 2rem 1rem;
+    background: var(--board-bg);
+}
+
+.player-area-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--board-gap);
+}
+
+.player-slot {
+    display: flex;
+    gap: var(--board-gap);
+}
+
+.player-slot-below {
+    flex-direction: column;
+}
+
+.player-slot-beside {
+    flex-direction: row;
+    align-items: center;
+}

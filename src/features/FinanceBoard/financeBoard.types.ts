@@ -30,15 +30,15 @@ export function financeSpaceName(space: FinanceSpace): string {
 }
 
 export interface FinanceBoardState {
-    agents: Record<FinanceSpace, number>;
+    agents: Record<FinanceSpace, Faction[]>;
 }
 
-export function buildInitialFinanceBoardState(): FinanceBoardState {
+export function buildInitialFinanceBoardState(ownerFaction: Faction): FinanceBoardState {
     return {
         agents: {
-            [FinanceSpace.Capital]: 3,
-            [FinanceSpace.Wealth]: 3,
-            [FinanceSpace.Debt]: 0
+            [FinanceSpace.Capital]: [ownerFaction, ownerFaction, ownerFaction],
+            [FinanceSpace.Wealth]: [ownerFaction, ownerFaction, ownerFaction],
+            [FinanceSpace.Debt]: []
         }
     };
 }

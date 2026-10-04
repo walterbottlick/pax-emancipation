@@ -1,0 +1,45 @@
+.splay {
+    width: var(--card-width);
+    display: flex;
+    flex-direction: column;
+}
+
+.splay-card {
+    position: relative;
+    box-sizing: border-box;
+    height: var(--card-height);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Each later card is tucked under the one above it, leaving only its bottom fifth showing. */
+.splay-card + .splay-card {
+    margin-top: calc(var(--card-height) * -0.8);
+}
+
+.splay-card-label {
+    box-sizing: border-box;
+    height: calc(var(--card-height) * 0.2 - 1px);
+    padding: 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #1c1c1c;
+}
+
+.splay-card-name {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}

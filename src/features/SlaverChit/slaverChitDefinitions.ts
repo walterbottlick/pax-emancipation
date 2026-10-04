@@ -1,10 +1,11 @@
 import type { SlaverChitDefinition } from "./slaverChit.types";
 import { DieColor } from "../../shared/dice";
+import { BloodProduct } from "../../shared/bloodProducts";
 
 export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     {
         chitName: "Caribbean Sugar",
-        bloodProduct: "Sugar",
+        bloodProduct: BloodProduct.Sugar,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -24,7 +25,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "North Atlantic Cotton",
-        bloodProduct: "Cotton",
+        bloodProduct: BloodProduct.Cotton,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -44,7 +45,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "Barbary Pirates",
-        bloodProduct: "Piracy",
+        bloodProduct: BloodProduct.Piracy,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -52,7 +53,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "South Atlantic Coffee",
-        bloodProduct: "Coffee",
+        bloodProduct: BloodProduct.Coffee,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -64,7 +65,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "Trans-Saharan Harems",
-        bloodProduct: "Harems",
+        bloodProduct: BloodProduct.Harems,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -72,7 +73,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "Zanzibar Ivory",
-        bloodProduct: "Ivory",
+        bloodProduct: BloodProduct.Ivory,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -84,7 +85,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "Canton Opium",
-        bloodProduct: "Opium",
+        bloodProduct: BloodProduct.Opium,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -96,7 +97,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "Pacific Tea",
-        bloodProduct: "Tea",
+        bloodProduct: BloodProduct.Tea,
         die1: {
             face: 1,
             color: DieColor.Black
@@ -104,7 +105,7 @@ export const SLAVER_CHIT_DEFINITIONS: SlaverChitDefinition[] = [
     },
     {
         chitName: "VOC Rubber",
-        bloodProduct: "Rubber",
+        bloodProduct: BloodProduct.Rubber,
         die1: {
             face: 1,
             color: DieColor.Black

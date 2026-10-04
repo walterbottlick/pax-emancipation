@@ -1,0 +1,21 @@
+/* One map card is a fifth of the map's content width (the map pads 3em per side; 1em equals 1rem there). */
+#board {
+    container-type: inline-size;
+    --card-width: calc((100cqw - 6rem) / 5);
+    --card-height: calc(var(--card-width) * 14 / 9);
+}
+
+.table-area {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: var(--board-bg);
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.splays {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
